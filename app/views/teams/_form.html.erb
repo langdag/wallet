@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :team_size %>
-    <%= form.number_field :team_size %>
+    <%= form.select(:team_size, Team.team_sizes.keys.map {|ts| [ts.titleize,ts]}) %>
   </div>
 
   <div class="actions">
