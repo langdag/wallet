@@ -1,0 +1,2 @@
+Created database 'wallet_dev'
+Created database 'wallet_test'

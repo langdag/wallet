@@ -1,4 +1,6 @@
 class Team < ApplicationRecord
+    include AccountHandler
+
     validates :name, presence: true
     validates :tagline, length: {minimum: 5, maximum: 30}, allow_blank: true
 
