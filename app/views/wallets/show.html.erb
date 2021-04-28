@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row wrap-header">
+    <div class="col align-text">
+      Wallet Holder: <strong><%= @account.owner.full_name %></strong>
+    </div>
+    <div class="col align-text">
+     Wallet Number: <strong><%= @account.account_number %></strong>
+    </div>
+    <div class="col align-text">
+      Wallet Balance: <strong><%= @account.balance %><%= @account.currency %></strong>
+    </div>
+    <div class="col-4">
+        <div class="button button-table"><%= link_to 'Deposit', users_path, class: "btn btn-outline-primary"%></div>  
+        <div class="button button-table"><%= link_to 'Withdraw', teams_path, class: "btn btn-outline-primary"%></div>
+        <div class="button button-table"><%= link_to 'Transfer', stocks_path, class: "btn btn-outline-primary"%></div>
+    </div>
+  </div>
+</div>
+<hr/>
+
+<h3>Transactions History</h3>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Type</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each_with_index do |transaction, idx| %>
+    <tr>
+      <th scope="row"><%= idx + 1 %></th>
+      <td><%= transaction.transaction_type %></td>
+      <td><%= transaction.origin.account_type %></td>
+      <td><%= transaction.recipient ? transaction.recipient.account_type : "withdraw operator" %></td>
+      <td><%= transaction.amount %></td>
+      <td><%= transaction.origin == @account ? transaction.origin.balance : transaction.recipient.balance %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

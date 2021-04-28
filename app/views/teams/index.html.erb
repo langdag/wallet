@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Teams</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Tagline</th>
-      <th>Team size</th>
-      <th colspan="3"></th>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tagline</th>
+      <th scope="col">TeamSize</th>
+      <th scope="col">Wallet Number</th>
+      <th scope="col">Wallet Balance</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.tagline %></td>
-        <td><%= team.team_size %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @teams.each_with_index do |team, idx| %>
+    <tr>
+      <th scope="row"><%= idx + 1 %></th>
+      <td><%= team.name %></td>
+      <td><%= team.tagline %></td>
+      <td><%= team.team_size %></td>
+      <td><%= team.wallet_account.account_number %></td>
+      <td><%= team.wallet_account.balance %></td>
+      <td>
+          <div class="button button-table"><%= link_to 'Wallet', users_path, class: "btn btn-outline-primary"%></div>  
+          <div class="button button-table"><%= link_to 'Deposit', teams_path, class: "btn btn-outline-primary"%></div>
+          <div class="button button-table"><%= link_to 'Withdraw', stocks_path, class: "btn btn-outline-primary"%></div>
+          <div class="button button-table"><%= link_to 'Transfer', stocks_path, class: "btn btn-outline-primary"%></div>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>
