@@ -1,0 +1,12 @@
+<h4>
+  Extracting funds from wallet number: <%= @wallet_account.account_number %>
+  <br/>
+  Current balance: <%= @wallet_account.balance %>
+</h3>
+<p>
+  <%= form_with model: @wallet_account, url: wallet_withdraw_path(id: @wallet_account.id), method: :post, local: true do |form| %>
+    <%= form.label 'Amount:' %>
+    <%= form.text_field 'amount', value: 0 %>
+    <%= form.submit 'Create Transaction' %>
+  <% end %>
+</p>

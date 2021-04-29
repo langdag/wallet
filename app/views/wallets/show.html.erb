@@ -38,7 +38,6 @@
       <td><%= transaction.origin.account_type %></td>
       <td><%= transaction.recipient ? transaction.recipient.account_type : "withdraw operator" %></td>
       <td><%= transaction.amount %></td>
-      <td><%= transaction.origin == @account ? transaction.origin.balance : transaction.recipient.balance %></td>
     </tr>
     <% end %>
   </tbody>
