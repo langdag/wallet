@@ -8,8 +8,7 @@
 require 'faker'
 
 (1..10).each do |id|
-    User.create!(
-        id: id, 
+    User.create!( 
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         email: Faker::Internet.email, 
@@ -18,7 +17,6 @@ end
 
 (1..10).each do |id|
     Team.create!(
-        id: id, 
         name: Faker::Team.name,
         tagline: Faker::Lorem.sentence(word_count: 2) ,
         team_size: %w[small medium large].sample, 
@@ -27,7 +25,6 @@ end
 
 (1..10).each do |id|
     Stock.create!(
-        id: id, 
         name: Faker::Company.name,
         code: Faker::Finance.ticker,
         company: Faker::Company.industry, 

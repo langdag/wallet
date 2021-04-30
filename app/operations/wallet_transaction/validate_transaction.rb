@@ -1,3 +1,5 @@
+require 'pry'
+
 module WalletTransaction
     class ValidateTransaction
         def initialize(amount, type, source_account = nil, recipient_account = nil)
@@ -17,7 +19,7 @@ module WalletTransaction
         end
 
         def validate_withdrawal
-            @errors << "Insufficient funds" if @amount > @source_account.balance
+            @errors << "Insufficient funds" if @amount.to_f > @source_account.balance.to_f
         end
 
         def validate_accounts
@@ -32,7 +34,7 @@ module WalletTransaction
         end
 
         def validate_amount
-            @errors << "Amount should be at least 0.01" if @amount == 0.00
+            @errors << "Amount should be at least 0.01" if @amount.to_f == 0.00
         end
     end
 end

@@ -1,4 +1,9 @@
-<h1>Stocks</h1>
+<div class="button-fit">
+  <h1 class="margin-h1">Stocks</h1>
+  <p class="line"></p>
+  <div class="button button-table"><%= link_to 'New', new_stock_path, class: "btn btn-outline-primary"%></div>
+  <div class="button button-table"><%= link_to 'Back', root_path, class: "btn btn-outline-primary"%></div>
+</div>
 
 <table class="table table-hover">
   <thead>
@@ -22,10 +27,9 @@
       <td><%= stock.wallet_account.account_number %></td>
       <td><%= stock.wallet_account.balance %></td>
       <td>
-          <div class="button button-table"><%= link_to 'Wallet', users_path, class: "btn btn-outline-primary"%></div>  
-          <div class="button button-table"><%= link_to 'Deposit', teams_path, class: "btn btn-outline-primary"%></div>
-          <div class="button button-table"><%= link_to 'Withdraw', stocks_path, class: "btn btn-outline-primary"%></div>
-          <div class="button button-table"><%= link_to 'Transfer', stocks_path, class: "btn btn-outline-primary"%></div>
+          <div class="button button-table"><%= link_to 'Show', stock_path(stock), class: "btn btn-outline-primary"%></div>  
+          <div class="button button-table"><%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-outline-primary"%></div>
+          <div class="button button-table"><%= link_to 'Wallet', wallet_path(stock.wallet_account), class: "btn btn-outline-primary"%></div>
       </td>
     </tr>
     <% end %>

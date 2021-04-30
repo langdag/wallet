@@ -1,12 +1,28 @@
+<% flash.each do |name, messages| %>
+  <% if messages.is_a?(String) %>
+    <p class="alert alert-success"><%= messages %></p>
+  <% elsif messages.is_a?(Array) && messages.size == 1 %>
+    <p class="alert alert-danger"><%= messages.first %></p>
+  <% else %>
+    <div class="alert alert-danger">
+      <ul>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
 <h4>
-  Extracting funds from wallet number: <%= @wallet_account.account_number %>
+  Extracting funds from wallet number: <%= @account.account_number %>
   <br/>
-  Current balance: <%= @wallet_account.balance %>
+  Current balance: <%= @account.balance %>
 </h3>
 <p>
-  <%= form_with model: @wallet_account, url: wallet_withdraw_path(id: @wallet_account.id), method: :post, local: true do |form| %>
+  <%= form_with model: @account, url: wallet_withdraw_path(id: @account.id), method: :post, local: true do |form| %>
     <%= form.label 'Amount:' %>
     <%= form.text_field 'amount', value: 0 %>
     <%= form.submit 'Create Transaction' %>
   <% end %>
 </p>
+<%= link_to 'Back', wallet_path(@account.owner.wallet_account) %>

@@ -1,6 +1,10 @@
 
-<h1>Users</h1>
-
+<div class="button-fit">
+  <h1 class="margin-h1">Users</h1>
+  <p class="line"></p>
+  <div class="button button-table"><%= link_to 'New', new_user_path, class: "btn btn-outline-primary"%></div>
+  <div class="button button-table"><%= link_to 'Back', root_path, class: "btn btn-outline-primary"%></div>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -23,8 +27,8 @@
       <td><%= user.wallet_account.account_number %></td>
       <td><%= user.wallet_account.balance %></td>
       <td>
-          <div class="button button-table"><%= link_to 'Show', users_path, class: "btn btn-outline-primary"%></div>  
-          <div class="button button-table"><%= link_to 'Edit', teams_path, class: "btn btn-outline-primary"%></div>
+          <div class="button button-table"><%= link_to 'Show', user_path(user), class: "btn btn-outline-primary"%></div>  
+          <div class="button button-table"><%= link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary"%></div>
           <div class="button button-table"><%= link_to 'Wallet', wallet_path(user.wallet_account), class: "btn btn-outline-primary"%></div>
       </td>
     </tr>

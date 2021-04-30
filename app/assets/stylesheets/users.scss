@@ -11,3 +11,15 @@
     vertical-align: middle;
     font-size: medium;
 }
+.line {
+    border-left: medium dashed black;
+    transform: translateY(10%);
+}
+
+.button-fit {
+    display: flex;
+}
+
+.margin-h1 {
+  margin-right: 10px
+}
